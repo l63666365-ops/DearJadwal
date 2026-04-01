@@ -323,6 +323,7 @@
     </style>
 </head>
 <body>
+<input type="file" id="taskImageInput" accept="image/*" style="display: none;" multiple onchange="previewTaskImages(this)">
 
 <div id="customAlert" class="custom-alert">
     <div class="alert-title" id="alertTitle">Pemberitahuan</div>
@@ -390,6 +391,12 @@
 </div>
 
 <script>
+function bukaKamera(event) {
+    if (event) event.preventDefault(); // Nahan biar nggak refresh halaman
+    // Samakan id-nya dengan yang ada di HTML kamu 
+    document.getElementById('taskImageInput').click();
+}
+    
     function showAlert(title, msg) {
         document.getElementById('alertTitle').innerText = title;
         document.getElementById('alertMsg').innerText = msg;
