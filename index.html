@@ -320,10 +320,63 @@
     transform: scale(0.9);
 }
 
-    </style>
+/* Animasi Fade In & Slide Up yang Lembut */
+@keyframes smoothFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Terapkan ke Container Utama dengan Durasi Lebih Lama */
+.container > * {
+    animation: smoothFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+    will-change: transform, opacity; /* Optimasi performa */
+}
+
+/* Staggered Delay (Jeda antar elemen muncul) */
+.header-strip { animation-delay: 0.15s; }
+.nav-day { animation-delay: 0.35s; }
+.schedule-grid { animation-delay: 0.55s; }
+.task-section { animation-delay: 0.75s; }
+.bg-control { animation-delay: 0.95s; }
+
+/* Efek Transisi Hover yang Luwes */
+.item-box, .btn-nav, .btn-add, #btn-edit-mode {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.item-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(5, 38, 89, 0.08);
+    background-color: #ffffff;
+    border-color: var(--color-3);
+}
+    
+/* Animasi khusus buat transisi ganti hari */
+@keyframes slideSwap {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-swap {
+    animation: slideSwap 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+</style>
 </head>
 <body>
-<input type="file" id="taskImageInput" accept="image/*" style="display: none;" multiple onchange="previewTaskImages(this)">
 
 <div id="customAlert" class="custom-alert">
     <div class="alert-title" id="alertTitle">Pemberitahuan</div>
@@ -391,12 +444,6 @@
 </div>
 
 <script>
-function bukaKamera(event) {
-    if (event) event.preventDefault(); // Nahan biar nggak refresh halaman
-    // Samakan id-nya dengan yang ada di HTML kamu 
-    document.getElementById('taskImageInput').click();
-}
-    
     function showAlert(title, msg) {
         document.getElementById('alertTitle').innerText = title;
         document.getElementById('alertMsg').innerText = msg;
@@ -551,8 +598,27 @@ function bukaKamera(event) {
         }
     }
 
-    function changeDay(offset) { currentViewDate.setDate(currentViewDate.getDate() + offset); renderSchedule(); }
-    
+    function changeDay(offset) {
+    const grid = document.getElementById('main-grid');
+    const dayDisplay = document.getElementById('display-day');
+
+    // 1. Hapus class animasi lama (kalau ada)
+    grid.classList.remove('animate-swap');
+    dayDisplay.classList.remove('animate-swap');
+
+    // 2. Trigger "reflow" biar browser sadar ada perubahan
+    void grid.offsetWidth; 
+    void dayDisplay.offsetWidth;
+
+    // 3. Jalankan logika ganti hari
+    currentViewDate.setDate(currentViewDate.getDate() + offset);
+    renderSchedule();
+
+    // 4. Pasang lagi class animasinya
+    grid.classList.add('animate-swap');
+    dayDisplay.classList.add('animate-swap');
+}
+
     function toggleEditMode() { 
         if (!isEditMode) {
             backupJadwal = JSON.parse(JSON.stringify(jadwalData));
@@ -570,6 +636,7 @@ function bukaKamera(event) {
     }
     
     function renderSchedule() {
+        
         const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
         const dayName = days[currentViewDate.getDay()];
         const isLibur = (dayName === "Sabtu" || dayName === "Minggu");
@@ -803,4 +870,4 @@ function bukaKamera(event) {
     <div id="modal-counter"></div>
 </div>
 </body>
-</html>
+    </html>
