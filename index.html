@@ -396,6 +396,40 @@
     }
 }
 
+    /* CSS BIAR GIF DI SAMPING JAM TANPA MERUSAK POSISI */
+.header-strip {
+    position: relative; /* Biar stiker bisa nempel relatif ke box ini */
+}
+
+.sticker-fixed {
+    position: absolute;
+    left: 7.5px;       /* Jarak dari kiri kartu */
+    top: 50px;        /* Sesuaikan biar sejajar tinggi jam */
+    width: 68px;      /* Ukuran imut sesuai request */
+    z-index: 10;
+}
+
+.sticker-fixed img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Jam dipastikan tetep di tengah */
+#clock {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto !important;
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes bounceSoft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 </style>
 </head>
 <body>
@@ -419,6 +453,9 @@
 
 <div class="container">
     <div class="glass-card header-strip">
+  <div class="sticker-fixed">
+        <img src="https://raw.githubusercontent.com/l63666365-ops/gif/refs/heads/main/67f82c85-614c-4546-8022-d2f8e6578bdc.gif" alt="panda-hug">
+    </div>
         <div id="clock" onclick="showMotivation()">00.00.00</div>
         <div id="quote-popup"></div>
         <div id="full-date">Memuat...</div>
@@ -987,5 +1024,7 @@
     
     <div id="modal-counter"></div>
 </div>
+        
+
 </body>
-            </html>
+    </html>
