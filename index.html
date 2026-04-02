@@ -702,7 +702,7 @@
         const statNext = document.getElementById('stat-next');
 
         if(todayName === "Sabtu" || todayName === "Minggu") {
-            statNow.innerText = "Libur Akhir Pekan ✨"; statNext.innerText = ""; return;
+            statNow.innerText = "Akhirnya Libur Manis 🤍✨"; statNext.innerText = ""; return;
         }
 
         const listMapel = jadwalData[todayName] || [];
@@ -728,10 +728,10 @@
             statNow.innerText = `Sekarang: ${ongoing.name} (berakhir ${ongoing.end - currentTime} menit lagi)`;
             statNext.innerText = next ? `Selanjutnya: ${next.name}` : "Selanjutnya: Jam Pulang 🎉";
         } else if (next) {
-            statNow.innerText = `Istirahat`;
+            statNow.innerText = `Yeeyy, waktunya istirahat sayang`;
             statNext.innerText = `Selanjutnya: ${next.name} (mulai ${next.start[0] * 60 + next.start[1] - currentTime} menit lagi)`;
         } else {
-            statNow.innerText = "Semua mapel hari ini selesai 🏆"; statNext.innerText = "Waktunya istirahat sayang";
+            statNow.innerText = "Yeeyy, semua mapel hari ini selesai 💖"; statNext.innerText = "Sekarang waktunya istirahat ya sayangku";
         }
     }
 
