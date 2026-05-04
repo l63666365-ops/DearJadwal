@@ -967,44 +967,40 @@ function renderSchedule() {
         
         if (!tasksObj) return;
 
-        // ubah object dari firebase jadi array
         const tasksArray = Object.keys(tasksObj).map(id => ({
             id: id,
             ...tasksObj[id]
         }));
 
-        // LOGIKA URUTAN:
-        // 1. Yang belum selesai (done: false) ditaruh paling atas
-        // 2. Sesama yang belum selesai, urut berdasarkan waktu (terbaru di atas)
-        // 3. Yang udah selesai (done: true) otomatis turun ke bawah
         tasksArray.sort((a, b) => {
-            if (a.done !== b.done) {
-                return a.done ? 1 : -1;
-            }
-            // Urutin berdasarkan timestamp biar yang baru nambah di atas
+            if (a.done !== b.done) return a.done ? 1 : -1;
             return b.timestamp - a.timestamp;
         });
 
         tasksArray.forEach((t) => {
             const li = document.createElement('li'); 
             li.className = `task-item ${t.done ? 'done' : ''}`;
-            li.style.flexDirection = "column"; 
-            li.style.alignItems = "flex-start"; 
-            li.style.position = "relative";
+            li.style.cssText = "flex-direction: column; align-items: flex-start; position: relative; padding-bottom: 15px;";
             
             let imgsHtml = "";
             if (t.images && t.images.length > 0) {
                 imgsHtml = `<div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;">`;
                 t.images.forEach((imgSrc, imgIndex) => { 
-                    imgsHtml += `<img src="${imgSrc}" class="task-img" style="width:80px; height:80px; object-fit:cover;" onclick="openImageFromFirebase('${t.id}', ${imgIndex})">`; 
+                    imgsHtml += `<img src="${imgSrc}" class="task-img" style="width:70px; height:70px; object-fit:cover; border-radius:8px;" onclick="openImageFromFirebase('${t.id}', ${imgIndex})">`; 
                 });
                 imgsHtml += `</div>`;
             }
 
+            // Tampilan waktu tipis-tipis di bawah teks tugas
+            const timeInfo = t.createdAt ? `<div style="font-size: 10px; color: var(--color-3); font-weight: 400; margin-top: 4px; opacity: 0.8;">Dicatat: ${t.createdAt}</div>` : "";
+
             li.innerHTML = `
                 <div style="display:flex; width:100%; align-items:center; gap:10px;">
                     <input type="checkbox" class="task-check" ${t.done ? 'checked' : ''} onclick="toggleTaskFirebase('${t.id}', ${t.done})">
-                    <span class="task-text">${t.text}</span>
+                    <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <span class="task-text" style="padding-right: 10px !important;">${t.text}</span>
+                        ${timeInfo}
+                    </div>
                     <button class="btn-delete-task" onclick="deleteTaskFirebase('${t.id}')">×</button>
                 </div>
                 ${imgsHtml}
@@ -1019,23 +1015,30 @@ function renderSchedule() {
     const input = document.getElementById('taskInput'); 
     if (input.value.trim() === "" && selectedImagesData.length === 0) return;
 
-    // Ambil referensi ke folder 'tasks' di Firebase
+    const now = new Date();
+    // Format: "Senin, 4 Mei 2026 - 22:45"
+    const waktuCatat = now.toLocaleDateString('id-ID', { 
+        weekday: 'short', 
+        day: 'numeric', 
+        month: 'short', 
+        year: 'numeric' 
+    }) + " • " + now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+
     const taskListRef = ref(db, 'tasks');
     const newTaskRef = push(taskListRef);
 
     set(newTaskRef, {
         text: input.value,
-        images: [...selectedImagesData], // Gambar bakal kesimpen dalam bentuk text Base64
+        images: [...selectedImagesData],
         done: false,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        createdAt: waktuCatat // Kita simpan string waktunya di sini
     }).then(() => {
         input.value = ""; 
         input.style.height = "45px";
         cancelImage();
-        // Gak perlu panggil loadTasks() lagi karena onValue udah otomatis
     });
 }
-
     function toggleTaskFirebase(id, currentStatus) {
     const isNowDone = !currentStatus; // Pakai titik koma, bukan koma
     const event = window.event;
@@ -1158,6 +1161,33 @@ window.openImageFromFirebase = openImageFromFirebase;
 
     let currentImgList = [];
     let currentImgIndex = 0;
+
+        // Fungsi buat hapus tugas otomatis kalau udah selesai > 1 minggu
+function cleanOldTasks() {
+    const taskRef = ref(db, 'tasks');
+    const satuMingguMs = 7 * 24 * 60 * 60 * 1000; // 7 hari dalam milidetik
+    const sekarang = Date.now();
+
+    onValue(taskRef, (snapshot) => {
+        const tasksObj = snapshot.val();
+        if (!tasksObj) return;
+
+        Object.keys(tasksObj).forEach(id => {
+            const task = tasksObj[id];
+            // Cek kalau sudah "done" DAN selisih waktunya lebih dari 1 minggu
+            if (task.done && (sekarang - task.timestamp) > satuMingguMs) {
+                remove(ref(db, `tasks/${id}`));
+                console.log(`Tugas "${task.text}" otomatis dihapus karena sudah seminggu selesai`);
+            }
+        });
+    }, { onlyOnce: true }); // Cukup jalankan sekali pas load biar hemat kuota database
+}
+
+// Panggil fungsinya setiap kali aplikasi dibuka
+window.addEventListener('load', () => {
+    // Kasih jeda dikit biar koneksi firebase stabil dulu
+    setTimeout(cleanOldTasks, 2000);
+});
 
 window.addTask = addTask;
 window.toggleEditMode = toggleEditMode;
