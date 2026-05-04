@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Sekolah Pro - Ocean Indigo Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.84, maximum-scale=0.84, user-scalable=no">
+    <title>Jadwal Sekolah Pro - SMKN 1 Kedawung</title>
     <style>
         /* IMPORT FONT BIAR LEBIH ESTETIK */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
@@ -34,7 +34,7 @@
     background: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
-    font-size: 2rem;
+    font-size: 32px;
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 50%;
@@ -53,7 +53,7 @@
     background: rgba(0,0,0,0.5);
     padding: 5px 15px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 14.4px;
 }
 
     /* Style untuk memperbesar gambar (Modal) */
@@ -100,43 +100,58 @@
             position: relative; 
             background: var(--white);
         }
-        
-        #clock { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; color: var(--color-2); cursor: pointer; transition: transform 0.2s; position: relative; z-index: 5; }
+    
+        #clock { 
+        font-size: 51.2px; 
+        font-weight: 800; 
+            letter-spacing: -1px;
+            font-variant-numeric: tabular-nums;
+        /* letter-spacing yang minus tadi udah aku hapus ya sayang */
+        color: var(--color-2); 
+        cursor: pointer; 
+        transition: transform 0.2s; 
+        position: relative; 
+        z-index: 5; 
+        display: block;
+        margin: 0 auto;
+    }
+
+
         #clock:active { transform: scale(0.95); }
-        #full-date { font-size: 1rem; font-weight: 600; color: var(--color-3); margin-bottom: 10px; }
+        #full-date { font-size: 16px; font-weight: 600; color: var(--color-3); margin-bottom: 10px; }
         
         #quote-popup { 
             position: absolute; top: 75px; left: 50%; transform: translate(-50%, -10px) scale(0.9);
             background: var(--white); 
-            color: var(--color-1); padding: 18px; border-radius: 18px; font-size: 0.9rem; text-align: center; 
+            color: var(--color-1); padding: 18px; border-radius: 18px; font-size: 14.4px; text-align: center; 
             width: 90%; max-width: 320px; pointer-events: none; opacity: 0; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 100; 
             border: 1px solid var(--color-4); box-shadow: 0 15px 35px rgba(5, 38, 89, 0.1);
         }
         #quote-popup.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
 
-        .status-container { font-size: 0.9rem; background: var(--white); padding: 12px; border-radius: 15px; margin-top: 10px; border: 1px solid var(--color-4); }
+        .status-container { font-size: 14.4px; background: var(--white); padding: 12px; border-radius: 15px; margin-top: 10px; border: 1px solid var(--color-4); }
         .status-now { color: var(--color-2); font-weight: 800; margin-bottom: 3px; } 
-        .status-next { color: var(--color-3); font-weight: 600; font-size: 0.8rem; }
+        .status-next { color: var(--color-3); font-weight: 600; font-size: 12.8px; }
 
         .nav-day { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
         .btn-nav { background: var(--color-2); border: none; color: var(--color-5); padding: 10px 15px; border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .btn-nav:hover { background: var(--color-1); }
         
-        .current-day-box { flex-grow: 1; padding: 10px; font-weight: 700; font-size: 1.1rem; background: var(--white); border: 1px solid var(--color-4); color: var(--color-1); }
+        .current-day-box { flex-grow: 1; padding: 10px; font-weight: 700; font-size: 17.6px; background: var(--white); border: 1px solid var(--color-4); color: var(--color-1); }
         
         .week-toggle { display: flex; gap: 10px; justify-content: center; }
         .btn-week { background: var(--white); border: 1px solid var(--color-4); color: var(--color-3); padding: 8px 25px; border-radius: 20px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
         .btn-week.active { background: var(--color-3); color: var(--white); border-color: var(--color-3); }
         
         .schedule-grid { display: grid; grid-template-columns: 1.5fr 1.2fr 0.7fr; gap: 10px; }
-        .grid-header { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; padding: 8px; background: var(--white); color: var(--color-2); border-radius: 10px; text-align: center; border-bottom: 2px solid var(--color-4); }
+        .grid-header { font-size: 12.8px; font-weight: 800; text-transform: uppercase; padding: 8px; background: var(--white); color: var(--color-2); border-radius: 10px; text-align: center; border-bottom: 2px solid var(--color-4); }
         .grid-column { display: flex; flex-direction: column; gap: 8px; }
         
         .item-box { 
             background: var(--white); 
             padding: 14px 5px; border-radius: 12px; 
-            font-size: 0.80rem; 
+            font-size: 12.8px; 
             font-weight: 700; 
             min-height: 55px; display: flex; align-items: center; justify-content: center; text-align: center; 
             border: 1px solid var(--color-4);
@@ -152,14 +167,14 @@
             background: transparent; 
             color: var(--color-1); 
             border: 1px solid var(--color-2); 
-            font-size: 0.85rem; 
+            font-size: 13.6px; 
             font-weight: 700; 
             text-align: center; 
             border-radius: 5px; 
             padding: 4px 2px;
             font-family: inherit;
         }
-        input[type="time"].input-edit { font-size: 0.8rem; color-scheme: light; }
+        input[type="time"].input-edit { font-size: 12.8px; color-scheme: light; }
         
         .highlight { 
             background: var(--color-2) !important; 
@@ -179,7 +194,8 @@
         .task-input-container { display: flex; gap: 10px; margin-top: 5px; }
         input[type="text"] { flex-grow: 1; background: var(--white); border: 2px solid var(--color-4); padding: 12px; border-radius: 12px; color: var(--color-1); font-weight: 600; outline: none; }
         input[type="text"]:focus { border-color: var(--color-2); }
-        .btn-add { background: var(--color-2); color: var(--color-5); border: none; width: 50px; border-radius: 12px; font-weight: bold; font-size: 1.8rem; cursor: pointer; }
+        .btn-add { background: var(--color-2); color: var(--color-5); border: none; width: 50px; border-radius: 12px; font-weight: bold; font-size: 20px; cursor: pointer; }
+    
         .btn-add:hover { background: var(--color-1); }
         
         .task-list { list-style: none; margin-top: 10px; }
@@ -210,7 +226,7 @@
             border: 2px solid var(--color-2);
             border-radius: 12px; 
             padding: 15px 30px;
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -245,7 +261,7 @@
         .pomo-icon {
             position: fixed; top: 20px; right: 20px; background: var(--color-2); color: var(--color-5);
             width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 1.5rem; cursor: pointer;
+            justify-content: center; font-size: 24px; cursor: pointer;
             box-shadow: 0 4px 15px rgba(5, 38, 89, 0.3); z-index: 999; transition: transform 0.2s;
         }
 
@@ -257,18 +273,22 @@
         }
 
         .pomo-box { text-align: center; position: relative; padding: 30px; width: 90%; max-width: 350px; background: var(--white); border-radius: 25px; border: 1px solid var(--color-4); box-shadow: 0 15px 30px rgba(5, 38, 89, 0.1); }
-        .pomo-time-big { font-size: 5rem; font-weight: bold; color: var(--color-2); margin: 20px 0; }
-        .pomo-btn-main { background: var(--color-2); color: var(--color-5); border: none; padding: 15px 40px; border-radius: 15px; font-weight: bold; font-size: 1rem; cursor: pointer; width: 100%; }
+        .pomo-time-big { font-size: 80px; font-weight: bold; color: var(--color-2); margin: 20px 0; }
+        .pomo-btn-main { background: var(--color-2); color: var(--color-5); border: none; padding: 15px 40px; border-radius: 15px; font-weight: bold; font-size: 16px; cursor: pointer; width: 100%; }
 
-        .custom-alert {
+                .custom-alert {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
-            background: var(--white); border: 1px solid var(--color-4); padding: 30px; border-radius: 25px;
-            width: 85%; max-width: 320px; z-index: 2000; text-align: center; display: none;
-            box-shadow: 0 20px 50px rgba(5, 38, 89, 0.15); transition: 0.3s;
+            background: var(--white); border: 1px solid var(--color-4); padding: 35px 25px; border-radius: 25px;
+            width: 90%; max-width: 380px; z-index: 5000; text-align: center; display: none;
+            box-shadow: 0 20px 50px rgba(5, 38, 89, 0.2); transition: 0.3s;
         }
         .custom-alert.show { display: block; transform: translate(-50%, -50%) scale(1); }
-        .alert-title { color: var(--color-2); font-weight: bold; margin-bottom: 15px; font-size: 1.2rem; }
-        .alert-btn { background: var(--color-2); color: var(--color-5); border: none; padding: 12px 30px; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; }
+        .alert-title { color: var(--color-2); font-weight: 800; margin-bottom: 10px; font-size: 20px; }
+        .alert-msg { color: var(--color-1); font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
+        
+        .alert-btn-container { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        .alert-btn { background: var(--color-2); color: var(--color-5); border: none; padding: 14px; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 14px; }
+        .alert-btn-alt { background: #f1f6f9; color: #5483b3; border: 1px solid #7da0ca; }
 
         .btn-delete-row {
             position: absolute;
@@ -385,26 +405,26 @@
 
 /* EFEK CONFETTI */
 .confetti-piece {
-    position: fixed; /* Biar gak ilang pas list tugas refresh */
+    position: fixed;
     width: 8px;
     height: 8px;
     border-radius: 2px;
-    pointer-events: none;
     z-index: 9999;
-    animation: fly-burst 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    pointer-events: none;
+    animation: flyOut 0.8s ease-out forwards;
 }
 
-@keyframes fly-burst {
-    0% { 
-        transform: translate(-50%, -50%) scale(0) rotate(0deg); 
-        opacity: 1; 
-    }
-    100% { 
-        transform: translate(var(--x), var(--y)) scale(1) rotate(360deg); 
-        opacity: 0; 
-    }
+@keyframes flyOut {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
 }
-
+    
+/* efek transisi pas tugas selesai */
+.slide-down {
+    transform: translateY(30px); 
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+}
     /* CSS BIAR GIF DI SAMPING JAM TANPA MERUSAK POSISI */
 .header-strip {
     position: relative; /* Biar stiker bisa nempel relatif ke box ini */
@@ -422,16 +442,6 @@
     width: 100%;
     height: auto;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-}
-
-/* Jam dipastikan tetep di tengah */
-#clock {
-    display: block;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto !important;
-    position: relative;
-    z-index: 5;
 }
 
 @keyframes bounceSoft {
@@ -461,6 +471,44 @@
     height: 45px; /* Otomatis agak tinggi pas diklik biar lega ngetiknya */
 }
 
+    /* Animasi pas tugas baru muncul */
+@keyframes slideInTask {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.task-item {
+    /* ... kode yang udah ada ... */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: slideInTask 0.5s ease out;
+}
+
+/* Efek pas tugas selesai biar beda */
+.task-item.done {
+    transform: scale(0.98);
+    filter: grayscale(0.5);
+    transition: all 0.8s ease;
+}
+
+    /* Animasi pas tugas baru muncul */
+@keyframes slideInTask {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.task-item {
+    /* ... kode yang udah ada ... */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: slideInTask 0.5s ease out;
+}
+
+/* Efek pas tugas selesai biar beda */
+.task-item.done {
+    transform: scale(0.98);
+    filter: grayscale(0.5);
+    transition: all 0.8s ease;
+}
+
 </style>
 </head>
 <body>
@@ -468,14 +516,17 @@
 <div id="customAlert" class="custom-alert">
     <div class="alert-title" id="alertTitle">Pemberitahuan</div>
     <div class="alert-msg" id="alertMsg">Pesan</div>
-    <button class="alert-btn" onclick="closeAlert()">MENGERTI</button>
+    <div class="alert-btn-container" id="alertButtons">
+        <button class="alert-btn" onclick="closeAlert()">MENGERTI</button>
+    </div>
 </div>
+
 
 <div class="pomo-icon" onclick="openPomo()">⏳</div>
 
 <div id="pomoOverlay" class="pomo-overlay">
     <div class="pomo-box">
-        <div class="close-pomo" onclick="closePomo()" style="position: absolute; top: 10px; right: 20px; font-size: 2rem; cursor: pointer;">×</div>
+        <div class="close-pomo" onclick="closePomo()" style="position: absolute; top: 10px; right: 20px; font-size: 32px; cursor: pointer;">×</div>
         <div id="pomoLabel" class="pomo-status" style="letter-spacing: 2px; font-weight: bold; color: var(--color-3);">SIAP FOKUS?</div>
         <div id="pomoDisplay" class="pomo-time-big">25:00</div>
         <button id="pomoBtn" class="pomo-btn-main" onclick="toggleTimer()">MULAI</button>
@@ -510,16 +561,14 @@
         <div class="grid-column" id="col-jam"></div>
         <div class="grid-column" id="col-ruang"></div>
     </div>
-    <div id="edit-controls" style="display:none; text-align:center; margin-top:10px;">
-        <button onclick="addRow()" style="background:var(--color-2); color:var(--color-5); border:none; padding:8px 20px; border-radius:10px; font-weight:bold; cursor:pointer;">+ TAMBAH MAPEL</button>
-    </div>
+    
 
     <div class="task-section">
-        <p style="font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; margin-top: 20px; color: var(--color-2);">DAFTAR TUGAS:</p>
+        <p style="font-size: 12.8px; font-weight: bold; margin-bottom: 5px; margin-top: 20px; color: var(--color-2);">DAFTAR TUGAS:</p>
         <div class="task-input-container">
-         <textarea id="taskInput" placeholder="Ketik tugas baru..."></textarea>
+         <textarea id="taskInput" placeholder="Ketik tugas di sini..."></textarea>
          <input type="file" id="taskImageInput" accept="image/*" style="display: none;" multiple onchange="previewTaskImages(this)">
-         <button class="btn-add" onclick="document.getElementById('taskImageInput').click()" style="font-size: 1.2rem;">📷</button>
+         <button class="btn-add" onclick="document.getElementById('taskImageInput').click()" style="font-size: 19.2px;">📷</button>
          <button class="btn-add" onclick="addTask()">+</button>
         </div>
         <div id="imagePreviewContainer" style="display:none; margin-top:10px; text-align:left; display: flex; flex-wrap: wrap; gap: 5px;"></div>
@@ -528,18 +577,46 @@
 
     <div class="bg-control">
         <button id="btn-edit-mode" onclick="toggleEditMode()">📌 EDIT JADWAL HARIAN</button>
-        <button id="btn-save-jadwal" class="btn-nav btn-save" style="display:none;" onclick="saveJadwal()">SIMPAN PERUBAHAN</button>
         <input type="file" id="bgInput" accept="image/*" style="display: none;" onchange="changeBg(this)">
     </div>
 </div>
 
-<script>
-    function showAlert(title, msg) {
-        document.getElementById('alertTitle').innerText = title;
-        document.getElementById('alertMsg').innerText = msg;
-        document.getElementById('customAlert').classList.add('show');
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+import { getDatabase, ref, push, set, onValue, remove, update } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+const firebaseConfig = {
+    databaseURL: "https://jadwal-sayangku-default-rtdb.asia-southeast1.firebasedatabase.app/"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+        
+function showAlert(title, msg, isConfirm = false) {
+    document.getElementById('alertTitle').innerText = title;
+    document.getElementById('alertMsg').innerText = msg;
+    const btnContainer = document.getElementById('alertButtons');
+    
+    if (isConfirm) {
+        const nomorWA = "6287831621020";
+        const pesan = "sayanggg, aku mau ada perubahan jadwal nih";
+        
+        // Kita suntik dua tombol sekaligus ke dalam container
+        btnContainer.innerHTML = `
+            <button class="alert-btn" onclick="window.open('https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}', '_blank'); closeAlert();">iyaa sayanggg</button>
+            <button class="alert-btn alert-btn-alt" style="margin-top: 8px; background: #f1f6f9; color: #5483b3; border: 1px solid #7da0ca;" onclick="closeAlert()">enggak sayanggg</button>
+        `;
+    } else {
+        // Default kalau cuma alert pemberitahuan biasa
+        btnContainer.innerHTML = `<button class="alert-btn" onclick="closeAlert()">MENGERTI</button>`;
     }
-    function closeAlert() { document.getElementById('customAlert').classList.remove('show'); }
+    
+    document.getElementById('customAlert').classList.add('show');
+}
+
+function closeAlert() { 
+    document.getElementById('customAlert').classList.remove('show'); 
+}
 
     // Pomodoro Logic
     let pMin = 25; let pSec = 0; let pInterval; let pIsRunning = false; let pIsWork = true;
@@ -644,31 +721,31 @@
     // JADWAL DATA - VERSI SINGLE WEEK
     const defaultJadwal = {
     "Senin": [
-        ["Informatika", "07:40-10:35", "(8)"],
-        ["Pendidikan Pancasila", "10:35-11:55", "(44)"],
-        ["Bahasa Indonesia", "12:40-14:00", "(44)"],
-        ["Bahasa Inggris", "14:10-15:30", "(44)"]
+        ["Informatika", "07:40 - 10:35", "(8)"],
+        ["Pendidikan Pancasila", "10:35 - 11:55", "(44)"],
+        ["Bahasa Indonesia", "12:40 - 14:00", "(44)"],
+        ["Bahasa Inggris", "14:10 - 15:30", "(44)"]
     ],
     "Selasa": [
-        ["Olahraga", "07:00-09:00", "(44)"],
-        ["Kejuruan (Pak Aris)", "09:00-14:00", "(44)"],
-        ["Matematika", "14:10-15:30", "(44)"]
+        ["Olahraga", "07:00 - 09:00", "(44)"],
+        ["Kejuruan (Pak Aris)", "09:00 - 14:00", "(44)"],
+        ["Matematika", "14:10 - 15:30", "(44)"]
     ],
     "Rabu": [
-        ["Agama Islam", "07:00-09:00", "(44)"],
-        ["Bahasa Indonesia", "09:00-10:35", "(44)"],
-        ["IPAS", "10:35-13:20", "(44)"],
-        ["Kejuruan (Bu Atik)", "13:20-15:30", "(44)"]
+        ["Agama Islam", "07:00 - 09:00", "(44)"],
+        ["Bahasa Indonesia", "09:00 - 10:35", "(44)"],
+        ["IPAS", "10:35 - 13:20", "(44)"],
+        ["Kejuruan (Bu Atik)", "13:20 - 15:30", "(44)"]
     ],
     "Kamis": [
-        ["Sejarah", "07:00-08:20", "(44)"],
-        ["Bahasa Inggris", "08:20-09:40", "(44)"],
-        ["Matematika", "09:55-11:15", "(44)"],
-        ["Bahasa Jawa", "11:15-13:20", "(44)"]
+        ["Sejarah", "07:00 - 08:20", "(44)"],
+        ["Bahasa Inggris", "08:20 - 09:40", "(44)"],
+        ["Matematika", "09:55 - 11:15", "(44)"],
+        ["Bahasa Jawa", "11:15 - 13:20", "(44)"]
     ],
     "Jumat": [
-        ["IPAS", "08:00-10:00", "(44)"],
-        ["Kejuruan (Bu Atik)", "10:15-13:20", "(44)"]
+        ["IPAS", "08:00 - 10:00", "(44)"],
+        ["Kejuruan (Bu Atik)", "10:15 - 13:20", "(44)"]
     ]
 };
 
@@ -679,18 +756,34 @@
     let isEditMode = false;
     let selectedImagesData = [];
 
-    function updateTime() {
-        const now = new Date();
-        document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID', { hour12: false }).replace(/:/g, '.');
-        document.getElementById('full-date').innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-        if (now.toDateString() !== lastDateStr) { 
-            lastDateStr = now.toDateString(); 
-            currentViewDate = new Date(); 
-            renderSchedule(); 
-        }
-        updateStatus(); 
-        if(!isEditMode) checkHighlight();
+        function updateTime() {
+    const now = new Date();
+    
+    // Ambil jam, menit, detik secara manual biar formatnya stabil
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    
+    // Pakai titik dua dengan spasi di antaranya
+    document.getElementById('clock').innerText = `${h} : ${m} : ${s}`;
+    
+    document.getElementById('full-date').innerText = now.toLocaleDateString('id-ID', { 
+        weekday: 'long', 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric' 
+    });
+
+    if (now.toDateString() !== lastDateStr) { 
+        lastDateStr = now.toDateString(); 
+        currentViewDate = new Date(); 
+        renderSchedule(); 
     }
+    
+    updateStatus(); 
+    if(!isEditMode) checkHighlight();
+}
+
     setInterval(updateTime, 1000);
 
     function updateStatus() {
@@ -709,18 +802,19 @@
         let ongoing = null; let next = null;
 
         for (let i = 0; i < listMapel.length; i++) {
-            const timeRange = listMapel[i][1].split('-');
-            const start = timeRange[0].split(':').map(Number);
-            const end = timeRange[1].split(':').map(Number);
+const timeRange = listMapel[i][1].split('-');
+            const start = timeRange[0].trim().split(':').map(Number);
+            const end = timeRange[1].trim().split(':').map(Number);
             const startTime = start[0] * 60 + start[1];
             const endTime = end[0] * 60 + end[1];
 
             if (currentTime >= startTime && currentTime <= endTime) {
                 ongoing = { name: listMapel[i][0], end: endTime };
-                next = listMapel[i+1] ? { name: listMapel[i+1][0], start: listMapel[i+1][1].split('-')[0].split(':').map(Number) } : null;
+                next = listMapel[i+1] ? { name: listMapel[i+1][0] } : null;
                 break;
             } else if (currentTime < startTime) {
-                next = { name: listMapel[i][0], start: start }; break;
+                next = { name: listMapel[i][0], start: start }; 
+                break;
             }
         }
 
@@ -729,12 +823,13 @@
             statNext.innerText = next ? `Selanjutnya: ${next.name}` : "Selanjutnya: Jam Pulang 🎉";
         } else if (next) {
             statNow.innerText = `Yeeyy, waktunya istirahat sayang`;
-            statNext.innerText = `Selanjutnya: ${next.name} (mulai ${next.start[0] * 60 + next.start[1] - currentTime} menit lagi)`;
+            const diff = (next.start[0] * 60 + next.start[1]) - currentTime;
+            statNext.innerText = `Selanjutnya: ${next.name} (mulai ${diff} menit lagi)`;
         } else {
-            statNow.innerText = "Yeeyy, semua mapel hari ini selesai 💖"; statNext.innerText = "Sekarang waktunya istirahat ya sayangku";
+            statNow.innerText = "Yeeyy, semua mapel hari ini selesai 💖"; 
+            statNext.innerText = "Sekarang waktunya istirahat ya sayangku";
         }
     }
-
     function changeDay(offset) {
     const grid = document.getElementById('main-grid');
     const dayDisplay = document.getElementById('display-day');
@@ -756,104 +851,62 @@
     dayDisplay.classList.add('animate-swap');
 }
 
-    function toggleEditMode() { 
-        if (!isEditMode) {
-            backupJadwal = JSON.parse(JSON.stringify(jadwalData));
-            isEditMode = true;
-        } else {
-            jadwalData = JSON.parse(JSON.stringify(backupJadwal));
-            isEditMode = false;
-        }
-        document.getElementById('btn-save-jadwal').style.display = isEditMode ? 'inline-block' : 'none'; 
-        document.getElementById('edit-controls').style.display = isEditMode ? 'block' : 'none';
-        const btn = document.getElementById('btn-edit-mode');
-        btn.innerText = isEditMode ? 'BATAL' : '📌 EDIT JADWAL HARIAN'; 
-        btn.classList.toggle('editing', isEditMode);
-        renderSchedule(); 
-    }
+function toggleEditMode() { 
+    showAlert(
+        "Ada perubahan jadwal ya sayang?", 
+        "Sini beritahu aku, nanti biar aku yang editin buat kesayangan aku 💖", 
+        true
+    );
+}
+   
+function renderSchedule() {
+    const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const dayName = days[currentViewDate.getDay()];
+    const isLibur = (dayName === "Sabtu" || dayName === "Minggu");
+    document.getElementById('display-day').innerText = currentViewDate.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short' });
     
-    function renderSchedule() {
-        
-        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        const dayName = days[currentViewDate.getDay()];
-        const isLibur = (dayName === "Sabtu" || dayName === "Minggu");
+    const colMapel = document.getElementById('col-mapel'); 
+    const colJam = document.getElementById('col-jam'); 
+    const colRuang = document.getElementById('col-ruang');
+    
+    colMapel.innerHTML = ""; colJam.innerHTML = ""; colRuang.innerHTML = "";
+    
+    if(isLibur && !isEditMode) {
+        colMapel.innerHTML = "<div class='item-box' style='border-left-color:#eee'>Libur</div>"; 
+        colJam.innerHTML = "<div class='item-box'>-</div>"; 
+        colRuang.innerHTML = "<div class='item-box'>-</div>"; 
+        return;
+    }
 
-        document.getElementById('display-day').innerText = currentViewDate.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short' });
-        const colMapel = document.getElementById('col-mapel'); 
-        const colJam = document.getElementById('col-jam'); 
-        const colRuang = document.getElementById('col-ruang');
-        
-        colMapel.innerHTML = ""; colJam.innerHTML = ""; colRuang.innerHTML = "";
-        
-        if(isLibur && !isEditMode) {
-            colMapel.innerHTML = "<div class='item-box' style='border-left-color:#eee'>Libur</div>"; 
-            colJam.innerHTML = "<div class='item-box'>-</div>"; 
-            colRuang.innerHTML = "<div class='item-box'>-</div>"; 
-            return;
+    // Perbaikan: Pakai jadwalData[dayName] langsung karena kamu nggak pakai sistem Ganjil/Genap lagi
+    const hariIni = jadwalData[dayName] || [];
+    
+    hariIni.forEach((item, index) => {
+        if (isEditMode) {
+            let jamRaw = item[1].replace(/\./g, ':');
+            let tp = jamRaw.split('-');
+            let jamStart = (tp[0] || "").trim();
+            let jamEnd = (tp[1] || "").trim();
+            colMapel.innerHTML += `<div class="item-box" style="position: relative;"> onclick="deleteRow(${index})">×</button><input class="input-edit" id="edit-mapel-${index}" value="${item[0]}"></div>`;
+            colJam.innerHTML += `<div class="item-box">
+                <input type="time" class="input-edit" id="edit-jam-start-${index}" value="${jamStart}"> 
+                <span style="font-size:10px">s/d</span> 
+                <input type="time" class="input-edit" id="edit-jam-end-${index}" value="${jamEnd}">
+            </div>`;
+            colRuang.innerHTML += `<div class="item-box"><input class="input-edit" id="edit-ruang-${index}" value="${item[2]}"></div>`;         
+        } else {
+            colMapel.innerHTML += `<div class="item-box" id="mapel-${index}">${item[0]}</div>`;
+            
+            // INI KUNCINYA: Pakai &nbsp; biar spasi nggak ilang dan lebar
+            let jamCantik = item[1].replace(/\./g, '&nbsp;:&nbsp;').replace('-', ' — ');
+            
+                colJam.innerHTML += `<div class="item-box" id="jam-${index}" style="font-size: 13.5px; letter-spacing: 0.5px;">${jamCantik}</div>`;
+    
+            colRuang.innerHTML += `<div class="item-box" id="ruang-${index}">${item[2]}</div>`;
         }
-
-        const hariIni = jadwalData[dayName] || [];
-        
-        hariIni.forEach((item, index) => {
-            if (isEditMode) {
-                const tp = item[1].split('-');
-                colMapel.innerHTML += `<div class="item-box" style="position: relative;"><button class="btn-delete-row" onclick="deleteRow(${index})">×</button><input class="input-edit" id="edit-mapel-${index}" value="${item[0]}"></div>`;
-                colJam.innerHTML += `<div class="item-box"><input type="time" class="input-edit" id="edit-jam-start-${index}" value="${tp[0]}"> s/d <input type="time" class="input-edit" id="edit-jam-end-${index}" value="${tp[1]}"></div>`;
-                colRuang.innerHTML += `<div class="item-box"><input class="input-edit" id="edit-ruang-${index}" value="${item[2]}"></div>`;
-            } else {
-                colMapel.innerHTML += `<div class="item-box" id="mapel-${index}">${item[0]}</div>`;
-                colJam.innerHTML += `<div class="item-box" id="jam-${index}">${item[1]}</div>`;
-                colRuang.innerHTML += `<div class="item-box" id="ruang-${index}">${item[2]}</div>`;
-            }
-        });
-        if(!isEditMode) checkHighlight();
-    }
-
-    function saveTemporarily() {
-        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        const dayName = days[currentViewDate.getDay()];
-        const tempJadwal = [];
-        const mapelInputs = document.querySelectorAll('#col-mapel .input-edit');
-        mapelInputs.forEach((_, index) => {
-            const m = document.getElementById(`edit-mapel-${index}`).value;
-            const js = document.getElementById(`edit-jam-start-${index}`).value;
-            const je = document.getElementById(`edit-jam-end-${index}`).value;
-            const r = document.getElementById(`edit-ruang-${index}`).value;
-            tempJadwal.push([m, `${js}-${je}`, r]);
-        });
-        jadwalData[dayName] = tempJadwal;
-    }
-
-    function addRow() {
-        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        const dayName = days[currentViewDate.getDay()];
-        saveTemporarily();
-        if(!jadwalData[dayName]) jadwalData[dayName] = [];
-        jadwalData[dayName].push(["Mapel Baru", "07:00-08:00", "(-)"]);
-        renderSchedule();
-    }
-
-    function deleteRow(index) {
-        saveTemporarily();
-        const days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        const dayName = days[currentViewDate.getDay()];
-        jadwalData[dayName].splice(index, 1);
-        renderSchedule();
-    }
-
-    function saveJadwal() {
-        saveTemporarily();
-        localStorage.setItem('savedJadwalSingle', JSON.stringify(jadwalData)); 
-        backupJadwal = JSON.parse(JSON.stringify(jadwalData));
-        isEditMode = false;
-        document.getElementById('btn-save-jadwal').style.display = 'none'; 
-        document.getElementById('edit-controls').style.display = 'none';
-        const btn = document.getElementById('btn-edit-mode');
-        btn.innerText = '📌 EDIT JADWAL HARIAN'; 
-        btn.classList.remove('editing');
-        showAlert("Tersimpan", "Jadwal berhasil diperbarui sayang!"); 
-        renderSchedule();
-    }
+    });
+    if(!isEditMode) checkHighlight();
+}
 
     function checkHighlight() {
         const now = new Date(); const ct = now.getHours() * 60 + now.getMinutes();
@@ -905,99 +958,139 @@
         container.innerHTML = ""; container.style.display = 'none';
     }
 
-    function loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem('mySchoolTasks')) || [];
+    function listenToTasks() {
+    const taskRef = ref(db, 'tasks');
+    onValue(taskRef, (snapshot) => {
         const list = document.getElementById('taskList'); 
         list.innerHTML = "";
-        tasks.forEach((t, i) => {
+        const tasksObj = snapshot.val();
+        
+        if (!tasksObj) return;
+
+        // ubah object dari firebase jadi array
+        const tasksArray = Object.keys(tasksObj).map(id => ({
+            id: id,
+            ...tasksObj[id]
+        }));
+
+        // LOGIKA URUTAN:
+        // 1. Yang belum selesai (done: false) ditaruh paling atas
+        // 2. Sesama yang belum selesai, urut berdasarkan waktu (terbaru di atas)
+        // 3. Yang udah selesai (done: true) otomatis turun ke bawah
+        tasksArray.sort((a, b) => {
+            if (a.done !== b.done) {
+                return a.done ? 1 : -1;
+            }
+            // Urutin berdasarkan timestamp biar yang baru nambah di atas
+            return b.timestamp - a.timestamp;
+        });
+
+        tasksArray.forEach((t) => {
             const li = document.createElement('li'); 
             li.className = `task-item ${t.done ? 'done' : ''}`;
-            li.style.flexDirection = "column"; li.style.alignItems = "flex-start"; li.style.position = "relative";
+            li.style.flexDirection = "column"; 
+            li.style.alignItems = "flex-start"; 
+            li.style.position = "relative";
+            
             let imgsHtml = "";
             if (t.images && t.images.length > 0) {
                 imgsHtml = `<div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;">`;
                 t.images.forEach((imgSrc, imgIndex) => { 
-                    imgsHtml += `<img src="${imgSrc}" class="task-img" style="width:80px; height:80px; object-fit:cover;" onclick="openImage(${i}, ${imgIndex})">`; 
+                    imgsHtml += `<img src="${imgSrc}" class="task-img" style="width:80px; height:80px; object-fit:cover;" onclick="openImageFromFirebase('${t.id}', ${imgIndex})">`; 
                 });
                 imgsHtml += `</div>`;
             }
+
             li.innerHTML = `
                 <div style="display:flex; width:100%; align-items:center; gap:10px;">
-                    <input type="checkbox" class="task-check" ${t.done ? 'checked' : ''} onclick="toggleTask(${i})">
-                    <span class="task-text" onclick="toggleTask(${i})">${t.text}</span>
-                    <button class="btn-delete-task" onclick="deleteTask(${i})">×</button>
+                    <input type="checkbox" class="task-check" ${t.done ? 'checked' : ''} onclick="toggleTaskFirebase('${t.id}', ${t.done})">
+                    <span class="task-text">${t.text}</span>
+                    <button class="btn-delete-task" onclick="deleteTaskFirebase('${t.id}')">×</button>
                 </div>
                 ${imgsHtml}
             `;
             list.appendChild(li);
         });
-    }
+    });
+}
+
 
     function addTask() {
     const input = document.getElementById('taskInput'); 
     if (input.value.trim() === "" && selectedImagesData.length === 0) return;
-    const tasks = JSON.parse(localStorage.getItem('mySchoolTasks')) || [];
-    tasks.push({ text: input.value, images: [...selectedImagesData], done: false }); 
-    localStorage.setItem('mySchoolTasks', JSON.stringify(tasks));
-    
-    input.value = ""; 
-    input.style.height = "45px"; // Reset tinggi kotak setelah nambah tugas
-    cancelImage(); 
-    loadTasks();
+
+    // Ambil referensi ke folder 'tasks' di Firebase
+    const taskListRef = ref(db, 'tasks');
+    const newTaskRef = push(taskListRef);
+
+    set(newTaskRef, {
+        text: input.value,
+        images: [...selectedImagesData], // Gambar bakal kesimpen dalam bentuk text Base64
+        done: false,
+        timestamp: Date.now()
+    }).then(() => {
+        input.value = ""; 
+        input.style.height = "45px";
+        cancelImage();
+        // Gak perlu panggil loadTasks() lagi karena onValue udah otomatis
+    });
 }
 
-    function toggleTask(i) {
-    const event = window.event; // Ambil posisi klik
-    const tasks = JSON.parse(localStorage.getItem('mySchoolTasks'));
+    function toggleTaskFirebase(id, currentStatus) {
+    const isNowDone = !currentStatus; // Pakai titik koma, bukan koma
+    const event = window.event;
     
-    // Kalau tugas baru mau dicentang (done = false ke true)
-    if (!tasks[i].done && event) {
-        // Tembak confetti tepat di posisi jari/kursor
+    // 1. munculin confetti kalau tugasnya baru dicentang selesai
+    if (isNowDone && event) {
         createConfetti(event.clientX, event.clientY);
     }
-
-    tasks[i].done = !tasks[i].done;
-    localStorage.setItem('mySchoolTasks', JSON.stringify(tasks));
     
-    // Kasih jeda dikit biar confetti kelihatan sebelum list ke-refresh
+    // 2. cari elemen li-nya buat dikasih efek slide-down
+    if (event) {
+        const taskEl = event.target.closest('.task-item');
+        if (taskEl) {
+            taskEl.classList.add('slide-down');
+        }
+    }
+    
+    // 3. kasih jeda biar animasinya selesai dulu sebelum data di-update
     setTimeout(() => {
-        loadTasks();
-    }, 50);
+        const taskRef = ref(db, `tasks/${id}`);
+        update(taskRef, { done: isNowDone })
+            .then(() => {
+                // reset cache kalau ada
+                if (window.lastTasksData) window.lastTasksData = "";
+            })
+            .catch((error) => {
+                console.error("Gagal update data: ", error);
+            });
+    }, 400);
 }
 
         function createConfetti(x, y) {
-    // Koleksi warna pelangi yang cerah biar seru
     const colors = ['#ff0000', '#ffea00', '#ff00ff', '#00ff00', '#00eaff', '#ff9100', '#ffffff'];
-    
-    for (let i = 0; i < 35; i++) { // Jumlah butiran ditambahin dikit biar makin rame
+    for (let i = 0; i < 35; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti-piece';
-        
-        // Pilih warna acak dari pelangi
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        
-        // Efek kilau (shadow) dikit biar estetik
-        confetti.style.boxShadow = "0 0 5px rgba(0,0,0,0.1)";
-        
         const angle = Math.random() * Math.PI * 2;
-        const velocity = 50 + Math.random() * 100; // Ledakan sedikit lebih luas
+        const velocity = 40 + Math.random() * 80;
         const targetX = (Math.cos(angle) * velocity) + 'px';
         const targetY = (Math.sin(angle) * velocity) + 'px';
-        
         confetti.style.setProperty('--x', targetX);
         confetti.style.setProperty('--y', targetY);
-        
         confetti.style.left = x + 'px';
         confetti.style.top = y + 'px';
-        
         document.body.appendChild(confetti);
-        
         setTimeout(() => confetti.remove(), 800);
     }
 }
 
-        function deleteTask(i) { const tasks = JSON.parse(localStorage.getItem('mySchoolTasks')); tasks.splice(i, 1); localStorage.setItem('mySchoolTasks', JSON.stringify(tasks)); loadTasks(); }
-    
+
+function deleteTaskFirebase(id) {
+    remove(ref(db, `tasks/${id}`));
+}
+        
     function changeBg(input) {
         if (input.files && input.files[0]) {
             const reader = new FileReader();
@@ -1026,6 +1119,22 @@
         });
     }
 
+        function openImageFromFirebase(taskId, imgIndex) {
+    const taskRef = ref(db, `tasks/${taskId}`);
+    onValue(taskRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data && data.images) {
+            currentImgList = data.images;
+            currentImgIndex = imgIndex;
+            updateModalContent();
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+    }, { onlyOnce: true });
+}
+window.openImageFromFirebase = openImageFromFirebase;
+
     function changeModalImg(step) {
         currentImgIndex += step;
         if (currentImgIndex >= currentImgList.length) currentImgIndex = 0;
@@ -1039,16 +1148,32 @@
         setTimeout(() => modal.style.display = 'none', 300);
     }
 
-    window.onload = function() {
+        window.onload = function() {
         const savedBg = localStorage.getItem('savedBg');
         if (savedBg) document.body.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('${savedBg}')`;
         updateTime(); 
         renderSchedule(); 
-        loadTasks();
+        listenToTasks(); // INI GANTINYA, panggil fungsi Firebase-nya kesayangan aku
     };
 
     let currentImgList = [];
     let currentImgIndex = 0;
+
+window.addTask = addTask;
+window.toggleEditMode = toggleEditMode;
+window.changeDay = changeDay;
+window.showMotivation = showMotivation;
+window.toggleTimer = toggleTimer;
+window.openPomo = openPomo;
+window.closePomo = closePomo;
+window.closeAlert = closeAlert;
+window.deleteTaskFirebase = deleteTaskFirebase;
+window.toggleTaskFirebase = toggleTaskFirebase;
+window.previewTaskImages = previewTaskImages;
+window.removeSpecificImage = removeSpecificImage;
+window.openImageFromFirebase = openImageFromFirebase;
+window.changeModalImg = changeModalImg; // Tambahin ini sayang
+window.closeImage = closeImage;         // Tambahin ini juga
 
 </script>
       <div id="imageModal" class="modal-overlay">
@@ -1060,7 +1185,5 @@
     
     <div id="modal-counter"></div>
 </div>
-        
-
 </body>
     </html>
